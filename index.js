@@ -3,6 +3,7 @@ import env from 'dotenv'
 import TodoRouter from './routes/todo.route.js';
 import mongoose from 'mongoose';
 import e from 'express';
+import userRouter from './routes/auth.route.js';
 
 env.config()
 
@@ -14,6 +15,7 @@ mongoose.connect(process.env.Mongo_Url).then(() => console.log('MongoDB Connecte
     .catch(err => console.log(err))
 
 app.use('/todo', TodoRouter)
+app.use('/auth', userRouter)
 
 app.listen(port, () => {
     console.log(`server is running on ${port}`)

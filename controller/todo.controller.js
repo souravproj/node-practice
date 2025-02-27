@@ -11,7 +11,6 @@ export const CreateTodo = async (req, res, next) => {
     } catch (error) {
         console.log(error)
     }
-
 }
 
 export const GetTodoList = async (req, res, next) => {
@@ -45,6 +44,15 @@ export const UpdateTodo = async (req, res, next) => {
 
         const updateTodo = await Todo.findByIdAndUpdate(todoId, req.body, { new: true });
         updateTodo ? res.status(200).json({ message: "todo updated successfully", updateTodo }) : res.status(403).json({ message: "id not found" })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getDetails = async (req, res, next) => {
+    try {
+        const userId = req.User;
+        console.log("userId", userId)
     } catch (error) {
         console.log(error)
     }
